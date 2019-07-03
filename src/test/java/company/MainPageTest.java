@@ -20,9 +20,7 @@ public class MainPageTest {
         this.driver = new ChromeDriver();
         this.driver.manage().timeouts().pageLoadTimeout(50, TimeUnit.SECONDS);
         this.driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-
         this.mainPage = new MainPage(this.driver);
-
     }
 
    @Test
@@ -31,7 +29,7 @@ public class MainPageTest {
        By clickSearch = By.xpath("//*[@id='searchbox']/button");
        By formCart = By.xpath("//*[@id='list']/a");
        WebElement webElement= mainPage.openMainPage().enterSomeBody_andClick(formSearch, "Blouse",   clickSearch, formCart);
-        webElement.click();
+       webElement.click();
 
        By addCart = By.xpath("//*[@id='center_column']/ul/li/div/div/div[3]/div/div[2]/a[1]/span");
        By proceed = By.xpath("//*[@id='layer_cart']/div[1]/div[2]/div[4]/a/span");
@@ -44,12 +42,10 @@ public class MainPageTest {
        } catch (InterruptedException e) {
        }
 
-      /* By addBlouse = By.xpath("//*[@id='cart_quantity_up_2_7_0_0']/span/i");*/
        mainPage.clickProceedToCheckout("//*[@id='cart_quantity_up_2_7_0_0']/span/i");// addBlouse);
 
-
-        By total_product = By.xpath("//*[@id='total_product']"); //Total products=$54.00
-        String products= mainPage.getSum(total_product);
+       By total_product = By.xpath("//*[@id='total_product']"); //Total products=$54.00
+       String products= mainPage.getSum(total_product);
        System.out.println(products);
 
        By total_shipping = By.xpath("//*[@id='total_shipping']"); //Total shipping=$2.00
@@ -68,7 +64,6 @@ public class MainPageTest {
        String totalBig= mainPage.getSum(finishTotal);
        System.out.println(totalBig);
 
-
        By iconTrash = By.xpath("//*[@id='2_7_0_0']/i"); //icon-trash
        WebElement webElementTrash = mainPage.findWebElement(iconTrash);
 
@@ -76,7 +71,5 @@ public class MainPageTest {
 
        By empty= By.xpath("//*[@id='center_column']/p");
        Assert.assertTrue(mainPage.isPresent(empty));
-
    }
-
 }

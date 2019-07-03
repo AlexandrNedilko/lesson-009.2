@@ -10,23 +10,14 @@ public class MainPage {
     private static final String MAIN_PAGE_URL = "http://automationpractice.com";
     private WebDriver driver;
 
-    private By tshirtsTab = By.xpath("//*[@id='block_top_menu']/ul/li[3]/a");
-    private By sizeLcheckbox = By.id("layered_id_attribute_group_3");
-
-    private By singIn = By.xpath("//*[@id='header']/div[2]/div/div/nav/div[1]/a");
-    private By singIn1 = By.xpath("//*[@id='columns']/div[1]/span[2]");
-
     public MainPage(WebDriver driver) {
         this.driver = driver;
     }
-
 
     public MainPage openMainPage() {
         this.driver.navigate().to(MAIN_PAGE_URL);
         return this;
     }
-
-
 
     public WebElement enterSomeBody_andClick(By path, String someone, By click, By firstForm) {
         WebElement webElement = this.driver.findElement(path);
@@ -66,12 +57,10 @@ public class MainPage {
     public void clickProceedToCheckout(String checkout) {
         new WebDriverWait(driver, 10).
                 until(ExpectedConditions.visibilityOfElementLocated(By.xpath(checkout))).click();
-
     }
+
     public String getSum(By myTotal){
         WebElement myAllTotal= this.driver.findElement(myTotal);
         return myAllTotal.getText();
-
     }
-
 }
