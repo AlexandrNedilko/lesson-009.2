@@ -25,63 +25,6 @@ public class MainPageTest {
 
     }
 
-    @Test
-    public void canSelectSizeLForTShirt() {
-        Assert.assertTrue(
-                mainPage.openMainPage()
-                        .openTShirtTab()
-                        .selectSizeL()
-                        .isSizeL());
-    }
-
-    @Test
-    public void openRegistrationButton() {
-        Assert.assertTrue(
-                mainPage.openMainPage()
-                        .openRegistrationButton()
-                        .isSignIN());
-    }
-
-    @Test()
-    public void createAnAccount () {
-        By emailButton =By.xpath("//*[@id='email_create']");
-        By creatAccaut =By.xpath("//*[@id='SubmitCreate']/span");
-        By firstForm= By.xpath("//*[@id='id_gender1']");
-        By secondFom= By.xpath("//*[@id='customer_firstname']");  ////*[@id="customer_firstname"]
-        By _3Form= By.xpath("//*[@id='customer_lastname']");
-        By _4Form= By.xpath("//*[@id='passwd']");
-        By _5Form= By.xpath("//*[@id='address1']");
-        By _6Form= By.xpath("//*[@id='city']");
-        By _33Form= By.xpath("//*[@id='alias']");
-        By register= By.xpath("//*[@id='submitAccount']/span");
-        By finish= By.xpath("//*[@id='center_column']/div/p");
-
-
-        WebElement webElement= mainPage.openMainPage()
-                .openRegistrationButton()
-                .enterSomeBody_andClick(emailButton, "qw@ee.rr", creatAccaut, firstForm);
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-        }
-        mainPage.click(webElement, firstForm);
-        mainPage.fillForm(webElement, secondFom, "Igor");
-        mainPage.fillForm(webElement, _3Form, "Pupkin");
-        mainPage.fillForm(webElement, _4Form, "123456");
-        mainPage.fillForm(webElement, _5Form, "str. Fanta,3");
-        mainPage.fillForm(webElement, _6Form, "Kyiv");
-        mainPage.fillForm(webElement, _33Form,"Obolon");
-
-        mainPage.click(webElement, register);
-
-        Assert.assertTrue(mainPage.isPresent(finish));
-    }
-
-   /* @After
-    public void cleanup(){
-    driver.manage().deleteAllCookies();
-    driver.close();
-    }*/
    @Test
     public void  SearcheAndCart() {
        By formSearch = By.xpath("//*[@id='search_query_top']");
@@ -126,12 +69,6 @@ public class MainPageTest {
        System.out.println(totalBig);
 
 
-
-
-
-
-
-
        By iconTrash = By.xpath("//*[@id='2_7_0_0']/i"); //icon-trash
        WebElement webElementTrash = mainPage.findWebElement(iconTrash);
 
@@ -140,7 +77,6 @@ public class MainPageTest {
        By empty= By.xpath("//*[@id='center_column']/p");
        Assert.assertTrue(mainPage.isPresent(empty));
 
-
-
    }
+
 }
