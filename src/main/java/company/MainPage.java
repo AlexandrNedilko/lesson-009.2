@@ -26,28 +26,7 @@ public class MainPage {
         return this;
     }
 
-    public MainPage openTShirtTab() {
-        this.driver.findElement(tshirtsTab).click();
-        return this;
-    }
 
-    public MainPage selectSizeL() {
-        this.driver.findElement(sizeLcheckbox).click();
-        return this;
-    }
-
-    public boolean isSizeL() {
-        return this.driver.findElement(sizeLcheckbox).isSelected();
-    }
-
-    public MainPage openRegistrationButton() {
-        this.driver.findElement(singIn).click();
-        return this;
-    }
-
-    public boolean isSignIN() {
-        return this.driver.findElement(singIn1).isEnabled();
-    }
 
     public WebElement enterSomeBody_andClick(By path, String someone, By click, By firstForm) {
         WebElement webElement = this.driver.findElement(path);
