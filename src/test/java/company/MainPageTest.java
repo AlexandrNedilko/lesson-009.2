@@ -89,7 +89,18 @@ public class MainPageTest {
 
        mainPage.click(webElementTrash, iconTrash);
 
-       By empty= By.xpath("//*[@id='center_column']/p");
-       Assert.assertTrue(mainPage.isPresent(empty));
+       try {
+           Thread.sleep(2000);
+       } catch (InterruptedException e) {
+       }
+
+       By empty= By.cssSelector("#center_column p.alert-warning");
+       boolean b = mainPage.isPresent(empty);
+       //*[@id='center_column']/p[1]
+       System.out.println(b);
+       Assert.assertTrue(mainPage.isPresent(empty)); //Your shopping cart is empty.
+
+/*       wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#center_column p.alert-warning")));
+       Assert.assertTrue(chromeDriver.findElement(By.cssSelector("#center_column p.alert-warning")).getText().equalsIgnoreCase("Your shopping cart is empty."));*/
    }
 }
