@@ -68,9 +68,6 @@ public class MainPage {
         return myAllTotal.getText();
     }
 
-
-
-
     // Если же элемент все таки отсутствует на странице и
     // нужно дождаться не только его появления, но и того, чтобы он стал видимым
     public static void appearElement(WebDriver driver, final WebElement element){
@@ -81,7 +78,6 @@ public class MainPage {
                 //System.out.println("apply wait "+element.getText() );
                 return element.getText().equals("$54.00");
             }
-
             public String toString() {      return null;            }
         });
     }

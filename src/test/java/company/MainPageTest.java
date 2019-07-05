@@ -58,33 +58,38 @@ public class MainPageTest {
        String actualResultProduct= mainPage.getSum(total_product/*, newSummary*/);
        //System.out.println("mainPage print "+actualResultProduct);
        String expectedResult = "$54.00";
-
        Assert.assertEquals("If test failed then total price was changed", expectedResult, actualResultProduct);
 
        By total_shipping = By.xpath("//*[@id='total_shipping']"); //Total shipping=$2.00
-       String shipping= mainPage.getSum(total_shipping);
+       String actualResultshipping= mainPage.getSum(total_shipping);
        //System.out.println(shipping);
-
-
+       String expectedResult1 = "$2.00";
+       Assert.assertEquals("If test failed then total price was changed", expectedResult1, actualResultshipping);
 
        By total = By.xpath("//*[@id='total_price_without_tax']"); //Total=$56.00
-       String totalAll= mainPage.getSum(total);
+       String actualResulttotalAll= mainPage.getSum(total);
        //System.out.println(totalAll);
+       String expectedResult2 = "$56.00";
+       Assert.assertEquals("If test failed then total price was changed", expectedResult2, actualResulttotalAll);
 
        By tax = By.xpath("//*[@id='total_tax']"); //Tax=$0.00
-       String taxAll= mainPage.getSum(tax);
+       String actualResulttaxAll= mainPage.getSum(tax);
       //System.out.println(taxAll);
+       String expectedResult3 = "$0.00";
+       Assert.assertEquals("If test failed then total price was changed", expectedResult3, actualResulttaxAll);
 
        By finishTotal = By.xpath("//*[@id='total_price']"); //TOTAL=$56.00
-       String totalBig= mainPage.getSum(finishTotal);
+       String actualResulttotalBig= mainPage.getSum(finishTotal );
        //System.out.println(totalBig);
+       String expectedResult4 = "$56.00";
+       Assert.assertEquals("If test failed then total price was changed", expectedResult4, actualResulttotalBig);
 
-     /*  By iconTrash = By.xpath("//*[@id='2_7_0_0']/i"); //icon-trash
+       By iconTrash = By.xpath("//*[@id='2_7_0_0']/i"); //icon-trash
        WebElement webElementTrash = mainPage.findWebElement(iconTrash);
 
        mainPage.click(webElementTrash, iconTrash);
 
        By empty= By.xpath("//*[@id='center_column']/p");
-       Assert.assertTrue(mainPage.isPresent(empty));*/
+       Assert.assertTrue(mainPage.isPresent(empty));
    }
 }
