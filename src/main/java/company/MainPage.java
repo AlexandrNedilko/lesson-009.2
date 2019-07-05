@@ -1,4 +1,5 @@
-/*Home work 9.2
+/*Lesson 9
+Home work 2
         1. Открыть главную страницу automationpractice.com
         2. В поле поиска ввести “Blouse” и выполнить поиск
         3. Переключится на режим просмотра ‘List”
