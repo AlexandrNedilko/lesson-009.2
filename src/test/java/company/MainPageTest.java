@@ -32,7 +32,7 @@ public class MainPageTest {
        webElement.click();
 
        By addCart = By.xpath("//*[@id='center_column']/ul/li/div/div/div[3]/div/div[2]/a[1]/span");
-       By proceed = By.xpath("//*[@id='layer_cart']/div[1]/div[2]/div[4]/a/span");
+       By proceed = By.xpath("//*[@id='layer_cart']/div[1]/div[2]/div[4]/a/span");  //Proceed to checkout
 
           mainPage.click(webElement,addCart);
        WebElement webElement1 = mainPage.findWebElement(proceed);
