@@ -1,9 +1,12 @@
 package company;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class MainPage {
@@ -60,7 +63,26 @@ public class MainPage {
     }
 
     public String getSum(By myTotal){
+
         WebElement myAllTotal= this.driver.findElement(myTotal);
         return myAllTotal.getText();
+    }
+
+
+
+
+    // Если же элемент все таки отсутствует на странице и
+    // нужно дождаться не только его появления, но и того, чтобы он стал видимым
+    public static void appearElement(WebDriver driver, final WebElement element){
+        Wait wait = new WebDriverWait(driver, 25)
+                .ignoring(NoSuchElementException.class);
+        wait.until(new ExpectedCondition<Boolean>() {
+            public Boolean apply(WebDriver driver) {
+                //System.out.println("apply wait "+element.getText() );
+                return element.getText().equals("$54.00");
+            }
+
+            public String toString() {      return null;            }
+        });
     }
 }

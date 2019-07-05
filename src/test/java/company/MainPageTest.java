@@ -26,8 +26,8 @@ public class MainPageTest {
    @Test
     public void  SearcheAndCart() {
        By formSearch = By.xpath("//*[@id='search_query_top']");
-       By clickSearch = By.xpath("//*[@id='searchbox']/button");
-       By formCart = By.xpath("//*[@id='list']/a");
+       By clickSearch = By.xpath("//*[@id='searchbox']/button"); //search
+       By formCart = By.xpath("//*[@id='list']/a"); //list
        WebElement webElement= mainPage.openMainPage().enterSomeBody_andClick(formSearch, "Blouse",   clickSearch, formCart);
        webElement.click();
 
@@ -42,34 +42,49 @@ public class MainPageTest {
        } catch (InterruptedException e) {
        }
 
-       mainPage.clickProceedToCheckout("//*[@id='cart_quantity_up_2_7_0_0']/span/i");// addBlouse);
+       mainPage.clickProceedToCheckout("//*[@id='cart_quantity_up_2_7_0_0']/span/i");// click Plus;
+
+       WebElement newSummary = mainPage.findWebElement(By.xpath("//*[@id='total_product']")); // получаем : Total products	$54.00
+      /* try {
+           Thread.sleep(500);
+       } catch (InterruptedException e) {
+           e.printStackTrace();
+       }*/
 
        By total_product = By.xpath("//*[@id='total_product']"); //Total products=$54.00
-       String products= mainPage.getSum(total_product);
-       System.out.println(products);
+
+       mainPage.appearElement(this.driver, newSummary);
+
+       String actualResultProduct= mainPage.getSum(total_product/*, newSummary*/);
+       //System.out.println("mainPage print "+actualResultProduct);
+       String expectedResult = "$54.00";
+
+       Assert.assertEquals("If test failed then total price was changed", expectedResult, actualResultProduct);
 
        By total_shipping = By.xpath("//*[@id='total_shipping']"); //Total shipping=$2.00
        String shipping= mainPage.getSum(total_shipping);
-       System.out.println(shipping);
+       //System.out.println(shipping);
+
+
 
        By total = By.xpath("//*[@id='total_price_without_tax']"); //Total=$56.00
        String totalAll= mainPage.getSum(total);
-       System.out.println(totalAll);
+       //System.out.println(totalAll);
 
        By tax = By.xpath("//*[@id='total_tax']"); //Tax=$0.00
        String taxAll= mainPage.getSum(tax);
-       System.out.println(taxAll);
+      //System.out.println(taxAll);
 
        By finishTotal = By.xpath("//*[@id='total_price']"); //TOTAL=$56.00
        String totalBig= mainPage.getSum(finishTotal);
-       System.out.println(totalBig);
+       //System.out.println(totalBig);
 
-       By iconTrash = By.xpath("//*[@id='2_7_0_0']/i"); //icon-trash
+     /*  By iconTrash = By.xpath("//*[@id='2_7_0_0']/i"); //icon-trash
        WebElement webElementTrash = mainPage.findWebElement(iconTrash);
 
        mainPage.click(webElementTrash, iconTrash);
 
        By empty= By.xpath("//*[@id='center_column']/p");
-       Assert.assertTrue(mainPage.isPresent(empty));
+       Assert.assertTrue(mainPage.isPresent(empty));*/
    }
 }
